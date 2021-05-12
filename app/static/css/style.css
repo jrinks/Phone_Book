@@ -1,0 +1,22 @@
+.banner{
+    background-image: url(https://clickamericana.com/wp-content/uploads/How-do-you-use-a-rotary-dial-phone-770x516.jpg);
+    background-size:50%;
+    background-repeat: no-repeat;
+    height: 80vh;
+    background-position: center;
+}
+
+.header-text{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display:flex;
+    justify-content: center;
+    padding-top: 5%;
+    left: 20rem;
+    top: 10rem;
+    color: black);
+}
+
+.navbar{
+    font-size: large;
+    font-weight:800;
+}

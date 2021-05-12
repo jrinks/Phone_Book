@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add your phone number to the Phone Book!</h1>
+
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.firstname.label }}
+            {{ form.firstname(class='form-control', placeholder='First Name') }}
+        </fieldset>
+        <fieldset>
+            {{ form.lastname.label }}
+            {{ form.lastname(class='form-control', placeholder='Last Name') }}
+        </fieldset>
+        <fieldset>
+            {{ form.phonenumber.label }}
+            {{ form.phonenumber(class='form-control', placeholder='Phone Number') }}
+        </fieldset>
+        {{ form.submit(class='btn btn-success') }}
+    </div>
+</form>
+
+{% endblock content %}

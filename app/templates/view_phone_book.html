@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1 class="header-text">You Are Viewing the Phonebook</h1>
+</div>
+
+
+{% if current_user.is_authenticated %}
+    <h4>Hello, {{ current_user.username }}. These are the current entries in our phone book.</h4>
+{% else %}
+    <h4>Please register to view the phone book!</h4>
+{% endif %}
+
+{% for u in user %}
+<div class="card mb-5">
+    <div class="card-body">
+        <h5 class="card-title">{{ user.firstname }} {{ user.lastname }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ user.phonenumber }}</h6>
+        <p class="card-text">{{ user.email }}</p>
+    </div>
+    </div>
+{% endfor %}
+
+
+{% endblock content %}

@@ -40,7 +40,7 @@ def register_phone_number():
         phonenumber = form.phonenumber.data
         #print(username, email, password, firstname, lastname, phonenumber)
   
-# Check if usre already exists
+# Check if usre number already exists
         existing_user = User.query.filter((User.username == username) | (User.phonenumber == phonenumber)).all()
         if existing_user:
             flash('That username or phone number already exists. Please try again', 'danger')

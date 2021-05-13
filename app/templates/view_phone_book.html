@@ -12,12 +12,12 @@
     <h4>Please register to view the phone book!</h4>
 {% endif %}
 
-{% for u in user %}
+{% for u in users %}
 <div class="card mb-5">
     <div class="card-body">
-        <h5 class="card-title">{{ user.firstname }} {{ user.lastname }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{ user.phonenumber }}</h6>
-        <p class="card-text">{{ user.email }}</p>
+        <h5 class="card-title">Name: {{ u.firstname }} {{ u.lastname }}</h5>
+        <h6 class="card-text">Phone Number: {{ u.phonenumber }}</h6>
+        <p class="card-text">Email: {{ u.email }}</p>
     </div>
     </div>
 {% endfor %}

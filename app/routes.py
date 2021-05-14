@@ -98,13 +98,14 @@ def my_info():
     }
     return render_template('my_info.html', **context)
 
-@app.route('/myinfo/<int:post_id>', methods=['GET', 'POST'])
-#@login_required
-def update_info(id):
+@app.route('/my_info/', methods=['GET', 'POST'])
+@login_required
+def update_info():
     info = User.query.filter_by(id=current_user.id).all()
     title = f'UPDATE USER INFO'
     update_form = UserInfoForm()
     if request.method =='POST' and update_form.validate_on_submit():
+        print('line 107')
         username = update_form.username.data
         email = update_form.email.data
         password = update_form.password.data
@@ -112,17 +113,17 @@ def update_info(id):
         lastname = update_form.lastname.data
         phonenumber = update_form.phonenumber.data
 
-        form.username.data = username
-        form.email.data = email
-        form.password.data = password
-        form.firstname.data = firstname
-        form.lastname.data = lastname
-        form.phonenumber.data = phonenumber
+        info.username = username
+        info.email = email
+        info.password = password
+        info.firstname = firstname
+        info.lastname = lastname
+        info.phonenumber = phonenumber
 
         db.session.commit()
 
-        return redirect(url_for('my_info'), id=current_user.id)
-
+        return redirect(url_for('my_info.html'))
+        
     return render_template('my_info.html', title=title, info=info, form=update_form)
 
 

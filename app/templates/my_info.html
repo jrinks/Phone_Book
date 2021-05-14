@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-text">
+    <h4>Hello, {{ current_user.username }}. This is your current information.</h4>
+
+</div>
+
+{% for u in users %}
+    <div class="card mb-5">
+        <div class="card-body">
+            <h5 class="card-title">Name: {{ u.firstname }} {{ u.lastname }}</h5>
+            <h6 class="card-text">Phone Number: {{ u.phonenumber }}</h6>
+            <p class="card-text">Email: {{ u.email }}</p>
+        </div>
+        </div>
+{% endfor %}
+<h3>Update Your Information Here</h3>
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.username.label }}
+            {{ form.username(class='form-control', placeholder='Username') }}
+        </fieldset>
+        <fieldset>
+            {{ form.email.label }}
+            {{ form.email(class='form-control', placeholder='Email') }}
+        </fieldset>
+        <fieldset>
+            {{ form.password.label }}
+            {{ form.password(class='form-control', placeholder='Password') }}
+        </fieldset>
+        <fieldset>
+            {{ form.confirm_pass.label }}
+            {{ form.confirm_pass(class='form-control', placeholder='Confirm Password') }}
+        </fieldset>
+        <fieldset>
+            {{ form.firstname.label }}
+            {{ form.firstname(class='form-control', placeholder='First Name') }}
+        </fieldset>
+        <fieldset>
+            {{ form.lastname.label }}
+            {{ form.lastname(class='form-control', placeholder='Last Name') }}
+        </fieldset>
+        <fieldset>
+            {{ form.phonenumber.label }}
+            {{ form.phonenumber(class='form-control', placeholder='Phone Number') }}
+        </fieldset>
+        {{ form.submit(class='btn btn-success') }}
+    </div>
+</form>
+
+{% endblock content %}

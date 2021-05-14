@@ -88,6 +88,58 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.route('/my_info', methods=['GET', 'POST'])
+#@login_required
+def my_info():    
+    context = {
+       'form' : UserInfoForm(),
+       'title': 'MY INFO',
+       'users': User.query.filter_by(id=current_user.id).all()
+    }
+    return render_template('my_info.html', **context)
+
+@app.route('/myinfo/<int:post_id>', methods=['GET', 'POST'])
+#@login_required
+def update_info(id):
+    info = User.query.filter_by(id=current_user.id).all()
+    title = f'UPDATE USER INFO'
+    update_form = UserInfoForm()
+    if request.method =='POST' and update_form.validate_on_submit():
+        username = update_form.username.data
+        email = update_form.email.data
+        password = update_form.password.data
+        firstname = update_form.firstname.data
+        lastname = update_form.lastname.data
+        phonenumber = update_form.phonenumber.data
+
+        form.username.data = username
+        form.email.data = email
+        form.password.data = password
+        form.firstname.data = firstname
+        form.lastname.data = lastname
+        form.phonenumber.data = phonenumber
+
+        db.session.commit()
+
+        return redirect(url_for('my_info'), id=current_user.id)
+
+    return render_template('my_info.html', title=title, info=info, form=update_form)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 @app.route('/createpost', methods=['GET', 'POST'])
 @login_required
 def createpost():
@@ -108,3 +160,4 @@ def createpost():
         return redirect(url_for('index'))
 
     return render_template('createpost.html', title=title, form=form)
+'''
